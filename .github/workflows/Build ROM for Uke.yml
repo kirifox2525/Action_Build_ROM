@@ -17,6 +17,10 @@ on:
         description: '启用完美图标'
         required: true
         type: boolean
+      DISPLAY_DRIVER:
+        description: '替换显示驱动'
+        required: true
+        type: boolean
       ENABLE_ADB:
         description: 'DEBUG'
         required: true
@@ -75,7 +79,8 @@ jobs:
             "$GITHUB_ENV" \
             "$GITHUB_WORKSPACE" \
             "${{ steps.setup-ndk.outputs.ndk-path }}" \
-            "${{ github.event.inputs.ENABLE_ADB }}"
+            "${{ github.event.inputs.ENABLE_ADB }}" \
+            "${{ github.event.inputs.DISPLAY_DRIVER }}"
       - name: 处理 ROM
         run: |
           mkdir -p "$GITHUB_WORKSPACE"/GithubRelease
